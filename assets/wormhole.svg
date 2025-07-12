@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Wormhole outer glow -->
+  <ellipse cx="50" cy="50" rx="45" ry="25" fill="url(#wormholeGlow)">
+    <animate attributeName="ry" values="25;27;25" dur="6s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <!-- Wormhole funnel layers -->
+  <ellipse cx="50" cy="50" rx="40" ry="20" fill="#1B1464" opacity="0.8">
+    <animate attributeName="ry" values="20;22;20" dur="7s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="50" cy="50" rx="35" ry="17" fill="#0652DD" opacity="0.8">
+    <animate attributeName="ry" values="17;19;17" dur="5s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="50" cy="50" rx="30" ry="14" fill="#1289A7" opacity="0.8">
+    <animate attributeName="ry" values="14;16;14" dur="8s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="50" cy="50" rx="25" ry="11" fill="#7158e2" opacity="0.7">
+    <animate attributeName="ry" values="11;13;11" dur="5s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="50" cy="50" rx="20" ry="8" fill="#3498db" opacity="0.6">
+    <animate attributeName="ry" values="8;10;8" dur="6s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="50" cy="50" rx="15" ry="5" fill="#B53471" opacity="0.5">
+    <animate attributeName="ry" values="5;7;5" dur="7s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="50" cy="50" rx="10" ry="3" fill="white" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <!-- Center light -->
+  <circle cx="50" cy="50" r="2" fill="white">
+    <animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Swirl effects -->
+  <path d="M30,50 C35,30 65,70 70,50" stroke="white" stroke-width="0.5" fill="none" opacity="0.5">
+    <animate attributeName="d" values="M30,50 C35,30 65,70 70,50;M30,50 C35,70 65,30 70,50;M30,50 C35,30 65,70 70,50" dur="6s" repeatCount="indefinite" />
+  </path>
+  
+  <path d="M30,55 C35,35 65,75 70,55" stroke="#3498db" stroke-width="0.5" fill="none" opacity="0.3">
+    <animate attributeName="d" values="M30,55 C35,35 65,75 70,55;M30,55 C35,75 65,35 70,55;M30,55 C35,35 65,75 70,55" dur="7s" repeatCount="indefinite" />
+  </path>
+  
+  <!-- Gradients -->
+  <defs>
+    <radialGradient id="wormholeGlow">
+      <stop offset="0%" stop-color="#3A1C71" />
+      <stop offset="50%" stop-color="#D76D77" />
+      <stop offset="100%" stop-color="#130f40" stop-opacity="0.3" />
+    </radialGradient>
+  </defs>
+</svg>

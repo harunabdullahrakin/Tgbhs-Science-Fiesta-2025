@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 100" width="800" height="100">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e74c3c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- DNA Helix -->
+  <g transform="translate(0,50)">
+    <!-- First strand -->
+    <path d="M0,0 Q25,-40 50,0 Q75,40 100,0 Q125,-40 150,0 Q175,40 200,0 Q225,-40 250,0 Q275,40 300,0 Q325,-40 350,0 Q375,40 400,0 Q425,-40 450,0 Q475,40 500,0 Q525,-40 550,0 Q575,40 600,0 Q625,-40 650,0 Q675,40 700,0 Q725,-40 750,0 Q775,40 800,0" fill="none" stroke="url(#grad1)" stroke-width="2">
+      <animate attributeName="d" values="M0,0 Q25,-40 50,0 Q75,40 100,0 Q125,-40 150,0 Q175,40 200,0 Q225,-40 250,0 Q275,40 300,0 Q325,-40 350,0 Q375,40 400,0 Q425,-40 450,0 Q475,40 500,0 Q525,-40 550,0 Q575,40 600,0 Q625,-40 650,0 Q675,40 700,0 Q725,-40 750,0 Q775,40 800,0;M0,0 Q25,40 50,0 Q75,-40 100,0 Q125,40 150,0 Q175,-40 200,0 Q225,40 250,0 Q275,-40 300,0 Q325,40 350,0 Q375,-40 400,0 Q425,40 450,0 Q475,-40 500,0 Q525,40 550,0 Q575,-40 600,0 Q625,40 650,0 Q675,-40 700,0 Q725,40 750,0 Q775,-40 800,0;M0,0 Q25,-40 50,0 Q75,40 100,0 Q125,-40 150,0 Q175,40 200,0 Q225,-40 250,0 Q275,40 300,0 Q325,-40 350,0 Q375,40 400,0 Q425,-40 450,0 Q475,40 500,0 Q525,-40 550,0 Q575,40 600,0 Q625,-40 650,0 Q675,40 700,0 Q725,-40 750,0 Q775,40 800,0" dur="15s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Second strand -->
+    <path d="M0,0 Q25,40 50,0 Q75,-40 100,0 Q125,40 150,0 Q175,-40 200,0 Q225,40 250,0 Q275,-40 300,0 Q325,40 350,0 Q375,-40 400,0 Q425,40 450,0 Q475,-40 500,0 Q525,40 550,0 Q575,-40 600,0 Q625,40 650,0 Q675,-40 700,0 Q725,40 750,0 Q775,-40 800,0" fill="none" stroke="url(#grad1)" stroke-width="2">
+      <animate attributeName="d" values="M0,0 Q25,40 50,0 Q75,-40 100,0 Q125,40 150,0 Q175,-40 200,0 Q225,40 250,0 Q275,-40 300,0 Q325,40 350,0 Q375,-40 400,0 Q425,40 450,0 Q475,-40 500,0 Q525,40 550,0 Q575,-40 600,0 Q625,40 650,0 Q675,-40 700,0 Q725,40 750,0 Q775,-40 800,0;M0,0 Q25,-40 50,0 Q75,40 100,0 Q125,-40 150,0 Q175,40 200,0 Q225,-40 250,0 Q275,40 300,0 Q325,-40 350,0 Q375,40 400,0 Q425,-40 450,0 Q475,40 500,0 Q525,-40 550,0 Q575,40 600,0 Q625,-40 650,0 Q675,40 700,0 Q725,-40 750,0 Q775,40 800,0;M0,0 Q25,40 50,0 Q75,-40 100,0 Q125,40 150,0 Q175,-40 200,0 Q225,40 250,0 Q275,-40 300,0 Q325,40 350,0 Q375,-40 400,0 Q425,40 450,0 Q475,-40 500,0 Q525,40 550,0 Q575,-40 600,0 Q625,40 650,0 Q675,-40 700,0 Q725,40 750,0 Q775,-40 800,0" dur="15s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Base pairs as small lines connecting the two strands -->
+    <g>
+      <line x1="50" y1="0" x2="50" y2="0" stroke="#3498db" stroke-width="3">
+        <animate attributeName="y1" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="100" y1="0" x2="100" y2="0" stroke="#e74c3c" stroke-width="3">
+        <animate attributeName="y1" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="150" y1="0" x2="150" y2="0" stroke="#3498db" stroke-width="3">
+        <animate attributeName="y1" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="200" y1="0" x2="200" y2="0" stroke="#e74c3c" stroke-width="3">
+        <animate attributeName="y1" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="250" y1="0" x2="250" y2="0" stroke="#3498db" stroke-width="3">
+        <animate attributeName="y1" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="300" y1="0" x2="300" y2="0" stroke="#e74c3c" stroke-width="3">
+        <animate attributeName="y1" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="350" y1="0" x2="350" y2="0" stroke="#3498db" stroke-width="3">
+        <animate attributeName="y1" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="400" y1="0" x2="400" y2="0" stroke="#e74c3c" stroke-width="3">
+        <animate attributeName="y1" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="450" y1="0" x2="450" y2="0" stroke="#3498db" stroke-width="3">
+        <animate attributeName="y1" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="500" y1="0" x2="500" y2="0" stroke="#e74c3c" stroke-width="3">
+        <animate attributeName="y1" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="550" y1="0" x2="550" y2="0" stroke="#3498db" stroke-width="3">
+        <animate attributeName="y1" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="600" y1="0" x2="600" y2="0" stroke="#e74c3c" stroke-width="3">
+        <animate attributeName="y1" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="650" y1="0" x2="650" y2="0" stroke="#3498db" stroke-width="3">
+        <animate attributeName="y1" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="700" y1="0" x2="700" y2="0" stroke="#e74c3c" stroke-width="3">
+        <animate attributeName="y1" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+      </line>
+      <line x1="750" y1="0" x2="750" y2="0" stroke="#3498db" stroke-width="3">
+        <animate attributeName="y1" values="-20;20;-20" dur="15s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="20;-20;20" dur="15s" repeatCount="indefinite" />
+      </line>
+    </g>
+  </g>
+</svg>

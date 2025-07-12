@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Outer circle -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="#3498db" stroke-width="2" />
+  
+  <!-- Atom nucleus -->
+  <circle cx="50" cy="50" r="10" fill="#e74c3c" />
+  
+  <!-- Electron orbits -->
+  <ellipse cx="50" cy="50" rx="35" ry="20" fill="none" stroke="#3498db" stroke-width="2" transform="rotate(0, 50, 50)">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="10s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="50" cy="50" rx="35" ry="20" fill="none" stroke="#3498db" stroke-width="2" transform="rotate(60, 50, 50)">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="60 50 50" to="420 50 50" dur="8s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="50" cy="50" rx="35" ry="20" fill="none" stroke="#3498db" stroke-width="2" transform="rotate(120, 50, 50)">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="120 50 50" to="480 50 50" dur="12s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <!-- Electrons -->
+  <circle cx="85" cy="50" r="4" fill="#3498db">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="10s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="85" cy="50" r="4" fill="#3498db">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="60 50 50" to="420 50 50" dur="8s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="85" cy="50" r="4" fill="#3498db">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="120 50 50" to="480 50 50" dur="12s" repeatCount="indefinite" />
+  </circle>
+</svg>

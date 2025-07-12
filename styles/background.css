@@ -1,0 +1,15 @@
+/* Scientific Background Styling */
+.gif-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('https://i.pinimg.com/originals/ef/1a/a2/ef1aa26a909f42be3e8e161b97f91ec6.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    opacity: 0.8; /* Slightly transparent to make content more readable */
+}

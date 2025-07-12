@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- E=mc² -->
+  <g fill="#3498db" filter="url(#glow)">
+    <text x="10" y="30" font-family="Arial" font-size="20" font-weight="bold">E=mc</text>
+    <text x="85" y="25" font-family="Arial" font-size="14" font-weight="bold">2</text>
+    
+    <!-- Moving particle -->
+    <circle cx="110" cy="25" r="3">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="r" values="2;4;2" dur="3s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Wave function -->
+  <path d="M120,25 Q130,15 140,25 Q150,35 160,25 Q170,15 180,25" stroke="#e74c3c" fill="none" stroke-width="2">
+    <animate attributeName="d" values="M120,25 Q130,15 140,25 Q150,35 160,25 Q170,15 180,25; M120,25 Q130,35 140,25 Q150,15 160,25 Q170,35 180,25; M120,25 Q130,15 140,25 Q150,35 160,25 Q170,15 180,25" dur="4s" repeatCount="indefinite" />
+  </path>
+</svg>

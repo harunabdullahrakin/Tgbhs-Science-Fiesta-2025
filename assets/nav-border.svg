@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 50" width="1000" height="50">
+  <defs>
+    <linearGradient id="navBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:0.2" />
+      <stop offset="50%" style="stop-color:#3498db;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#2c3e50;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main border path -->
+  <path d="M0,2 L50,2 C75,2 85,25 110,25 C135,25 145,2 170,2 L830,2 C855,2 865,25 890,25 C915,25 925,2 950,2 L1000,2 L1000,50 L0,50 Z" 
+        fill="none" stroke="url(#navBorder)" stroke-width="2" />
+  
+  <!-- Decorative gear elements -->
+  <circle cx="110" cy="25" r="8" fill="none" stroke="#3498db" stroke-width="1.5" opacity="0.7">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 110 25" to="360 110 25" dur="20s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="890" cy="25" r="8" fill="none" stroke="#3498db" stroke-width="1.5" opacity="0.7">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="360 890 25" to="0 890 25" dur="20s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Science-themed decorative elements -->
+  <path d="M500,2 L500,10 M490,10 L510,10" stroke="#3498db" stroke-width="1.5" opacity="0.6" />
+  <circle cx="500" cy="20" r="3" fill="none" stroke="#3498db" stroke-width="1" opacity="0.7" />
+  
+  <!-- Small connecting nodes -->
+  <circle cx="170" cy="2" r="3" fill="#3498db" opacity="0.5" />
+  <circle cx="830" cy="2" r="3" fill="#3498db" opacity="0.5" />
+  
+  <circle cx="300" cy="2" r="2" fill="#3498db" opacity="0.3" />
+  <circle cx="700" cy="2" r="2" fill="#3498db" opacity="0.3" />
+</svg>

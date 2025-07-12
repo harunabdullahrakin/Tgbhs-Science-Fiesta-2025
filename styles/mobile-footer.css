@@ -1,0 +1,366 @@
+/* Mobile-First Footer Styles */
+
+/* Hide desktop footer on mobile */
+@media (max-width: 768px) {
+  /* Mobile footer transformation */
+  .footer-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 30px 20px 15px !important;
+    width: 100% !important;
+  }
+  
+  .footer-left {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;
+    padding: 0 !important;
+  }
+  
+  .footer-logo {
+    align-items: center !important;
+    margin-bottom: 15px !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  .footer-logo img {
+    width: 90px !important;
+    height: auto !important;
+    margin: 0 auto 10px !important;
+  }
+  
+  .footer-logo h3 {
+    font-size: 1.2rem !important;
+    margin: 5px 0 15px !important;
+    text-align: center !important;
+  }
+  
+  .footer-nav {
+    order: 2 !important;
+    width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;
+    padding: 0 !important;
+  }
+  
+  .footer-nav h4 {
+    margin-bottom: 15px !important;
+    text-align: center !important;
+    color: var(--secondary-color) !important;
+  }
+  
+  .footer-nav ul {
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .footer-contact {
+    order: 3 !important;
+    width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;
+    padding: 0 !important;
+  }
+  
+  .footer-contact h4 {
+    margin-bottom: 15px !important;
+    text-align: center !important;
+    color: var(--secondary-color) !important;
+  }
+  
+  .footer-sponsors {
+    order: 4 !important;
+    width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;
+    padding: 0 !important;
+  }
+  
+  .footer-sponsors h4 {
+    margin-bottom: 15px !important;
+    text-align: center !important;
+    color: var(--secondary-color) !important;
+  }
+  
+  .footer-nav ul, .footer-contact ul, .footer-sponsors ul {
+    align-items: center !important;
+  }
+  
+  .footer-contact ul li {
+    justify-content: center !important;
+  }
+  
+  .footer-nav h4, .footer-contact h4, .footer-sponsors h4 {
+    text-align: center !important;
+  }
+  
+  .sponsors-list li {
+    justify-content: center !important;
+  }
+  
+  .social-icons {
+    justify-content: center !important;
+  }
+  
+  /* Footer bottom section */
+  .footer-bottom {
+    margin-top: 10px !important;
+    padding: 20px 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .footer-bottom p {
+    font-size: 0.85rem !important;
+    color: white !important;
+    opacity: 0.7 !important;
+    margin: 5px 0 !important;
+    text-align: center !important;
+  }
+  
+  .footer-bottom i {
+    color: white !important;
+    opacity: 0.8 !important;
+    animation: gearSpin 4s linear infinite !important;
+  }
+  
+  /* Hide desktop footer on mobile */
+  .footer-desktop {
+    display: none !important;
+  }
+  
+  /* Mobile footer styles */
+  .footer-mobile {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 30px 20px 15px !important;
+    background-color: #0a1622 !important;
+    width: 100% !important;
+  }
+  
+  /* Logo */
+  .mobile-logo {
+    width: 80px !important;
+    height: auto !important;
+    margin-bottom: 10px !important;
+  }
+  
+  /* Site title */
+  .mobile-title {
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 1.2rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    color: white !important;
+    letter-spacing: 0.5px !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Social icons */
+  .mobile-social-icons {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    margin-bottom: 30px !important;
+  }
+  
+  .mobile-social-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    color: white !important;
+    transition: transform 0.3s !important;
+    font-size: 1.2rem !important;
+    text-decoration: none !important;
+  }
+  
+  .mobile-social-icon:hover {
+    transform: translateY(-3px) !important;
+  }
+  
+  .mobile-social-icon.facebook {
+    background-color: #1877f2 !important;
+  }
+  
+  .mobile-social-icon.twitter {
+    background-color: #1da1f2 !important;
+  }
+  
+  .mobile-social-icon.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+  }
+  
+  .mobile-social-icon.youtube {
+    background-color: #ff0000 !important;
+  }
+  
+  .mobile-social-icon.discord {
+    background-color: #5865f2 !important;
+  }
+  
+  /* Section titles */
+  .mobile-section-title {
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 1.1rem !important;
+    color: #3498db !important;
+    margin: 0 0 12px 0 !important;
+    text-align: center !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+  }
+  
+  /* Navigation links */
+  .mobile-nav-links {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 25px !important;
+    width: 100% !important;
+  }
+  
+  .mobile-nav-links a {
+    color: white !important;
+    text-decoration: none !important;
+    margin-bottom: 10px !important;
+    opacity: 0.9 !important;
+    font-size: 0.95rem !important;
+    padding: 5px 0 !important;
+    font-weight: 400 !important;
+  }
+  
+  .mobile-nav-links a:hover {
+    opacity: 1 !important;
+    color: #3498db !important;
+  }
+  
+  /* Contact info */
+  .mobile-contact {
+    margin-bottom: 30px !important;
+    width: 100% !important;
+  }
+  
+  .mobile-contact p {
+    color: white !important;
+    margin: 0 0 10px 0 !important;
+    opacity: 0.9 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  .mobile-contact i {
+    margin-right: 8px !important;
+    opacity: 1 !important;
+    color: #3498db !important;
+    width: 18px !important;
+    text-align: center !important;
+  }
+  
+  /* Sponsors */
+  .mobile-sponsors {
+    margin-bottom: 30px !important;
+    width: 100% !important;
+  }
+  
+  .mobile-sponsor {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .sponsor-circle {
+    width: 25px !important;
+    height: 25px !important;
+    background-color: white !important;
+    border-radius: 50% !important;
+    margin-right: 10px !important;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  .gold {
+    color: #FFD700 !important;
+    font-weight: 500 !important;
+  }
+  
+  .silver {
+    color: #C0C0C0 !important;
+    font-weight: 500 !important;
+  }
+  
+  .bronze {
+    color: #CD7F32 !important;
+    font-weight: 500 !important;
+  }
+  
+  /* Copyright */
+  .mobile-copyright {
+    padding-top: 15px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    width: 100% !important;
+  }
+  
+  .mobile-copyright p {
+    color: white !important;
+    opacity: 0.7 !important;
+    font-size: 0.8rem !important;
+    margin: 5px 0 !important;
+    line-height: 1.5 !important;
+  }
+  
+  .mobile-copyright i {
+    color: #3498db !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Desktop footer styles */
+@media (min-width: 769px) {
+  .footer-mobile {
+    display: none !important;
+  }
+  
+  .footer-desktop {
+    display: block !important;
+  }
+  
+  /* Ensure proper spacing and alignment in desktop footer */
+  .footer-content {
+    padding: 40px 20px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .footer-left, .footer-nav, .footer-contact, .footer-sponsors {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .footer-logo {
+    align-items: flex-start;
+  }
+  
+  .social-icons {
+    justify-content: flex-start;
+  }
+  
+  .footer-section ul {
+    align-items: flex-start;
+  }
+}

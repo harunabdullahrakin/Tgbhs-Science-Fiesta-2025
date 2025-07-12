@@ -1,0 +1,707 @@
+/* Responsive Styles */
+
+/* Large Devices - up to 1200px */
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .atom-animation {
+        width: 120px;
+        height: 120px;
+    }
+
+    .rocket-animation {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Medium Devices - up to 992px */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .events-container,
+    .wiki-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Adjust footer for tablet */
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left, .footer-middle, .footer-right {
+        width: 100%;
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .footer-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .footer-section {
+        margin-bottom: 25px;
+    }
+    
+    .footer-section h4 {
+        text-align: center;
+    }
+
+    .sponsors-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .atom-animation {
+        top: 10%;
+        right: 5%;
+    }
+
+    .rocket-animation {
+        bottom: 10%;
+        left: 5%;
+    }
+    
+    /* Steampunk Card Responsive Styles */
+    .container {
+        height: 520px;
+    }
+    
+    .card {
+        width: 90%;
+        max-width: 650px;
+        height: 470px;
+    }
+    
+    .card-title {
+        font-size: 30px;
+    }
+    
+    .card-text {
+        font-size: 16px;
+    }
+    
+    .pipe-1 {
+        width: 280px;
+        height: 14px;
+        top: 140px;
+        left: -20%;
+    }
+    
+    .pipe-2 {
+        width: 15px;
+        height: 120px;
+        top: 340px;
+        right: -20px;
+    }
+    
+    .pipe-joint-1 {
+        top: 34px;
+        left: -5px;
+    }
+    
+    .pipe-joint-2 {
+        top: 284px;
+        left: -5px;
+    }
+    
+    .pipe-joint-3 {
+        top: 330px;
+        right: -5px;
+    }
+    
+    .pipe-joint-4 {
+        top: 450px;
+        right: -5px;
+    }
+}
+
+/* Small Devices - up to 768px */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        z-index: 102;
+        padding: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+        background-color: rgba(52, 152, 219, 0.1);
+    }
+
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background-color: var(--text-light);
+        border-radius: 3px;
+    }
+
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        flex-direction: column;
+        width: 80%;
+        height: 100vh;
+        background-color: rgba(4, 12, 24, 0.95);
+        padding: 80px 30px 30px;
+        transition: all 0.3s ease;
+        z-index: 101;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    /* Footer adjustments for mobile */
+    .scientific-footer {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+        padding: 0 15px;
+    }
+    
+    .footer-left, .footer-middle, .footer-right {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .footer-logo img {
+        width: 80px;
+    }
+    
+    .footer-logo h3 {
+        margin-top: 10px;
+        font-size: 1.1rem;
+    }
+    
+    .social-icons {
+        justify-content: center;
+        margin-top: 15px;
+        gap: 15px;
+    }
+    
+    .footer-section {
+        width: 100%;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    
+    .footer-section h4 {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+    
+    .footer-section ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-section ul li {
+        margin-bottom: 8px;
+    }
+    
+    .sponsor-link {
+        justify-content: center;
+    }
+    
+    .sponsor-name {
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom {
+        margin-top: 20px;
+        padding: 15px 0;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.8rem;
+        margin: 5px 0;
+    }
+    
+    /* Fiesta page specific responsive styles */
+    .event-detail-header {
+        flex-direction: column;
+    }
+    
+    .event-image-large {
+        width: 100%;
+        max-width: 100%;
+        margin-top: var(--spacing-md);
+    }
+    
+    .timeline-item {
+        padding-left: var(--spacing-lg);
+    }
+}
+
+    .hero {
+        min-height: 60vh;
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        padding: 0 15px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+    
+    .rocket-svg {
+        width: 110px;
+        height: 110px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .events-container,
+    .wiki-container {
+        grid-template-columns: 1fr;
+    }
+
+    .event-card,
+    .wiki-card {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .countdown-container {
+        width: 95%;
+        padding: var(--spacing-md);
+    }
+
+    .countdown-title {
+        font-size: 1.5rem;
+    }
+
+    .countdown-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .countdown {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .countdown-item {
+        min-width: 70px;
+        padding: 10px;
+    }
+
+    .countdown-number {
+        font-size: 1.8rem;
+    }
+
+    .atom-animation {
+        width: 80px;
+        height: 80px;
+        top: 5%;
+        right: 5%;
+    }
+
+    .rocket-animation {
+        width: 60px;
+        height: 60px;
+        bottom: 5%;
+        left: 5%;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+
+    /* Join section responsive */
+    .join-title {
+        font-size: 1.8rem;
+    }
+
+    .join-subtitle {
+        font-size: 1rem;
+    }
+
+    .join-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    /* Improved scroll indicator for mobile */
+    .scroll-indicator {
+        bottom: 20px;
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 8px 15px;
+        border-radius: 20px;
+    }
+
+    .scroll-text {
+        font-size: 0.7rem;
+    }
+}
+
+/* Extra Small Devices - up to 576px */
+@media (max-width: 576px) {
+    .brand-text {
+        font-size: 1rem;
+    }
+
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .underline::after {
+        height: 3px;
+        bottom: -8px;
+    }
+
+    .badge {
+        font-size: 0.7rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .event-title {
+        font-size: 1.3rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .wiki-title {
+        font-size: 1.2rem;
+    }
+
+    .hero-content,
+    .event-card,
+    .wiki-card {
+        width: 95%;
+    }
+    
+    /* Footer further mobile refinements for smallest screens */
+    .scientific-footer {
+        padding: 20px 0 10px;
+    }
+    
+    .footer-content {
+        padding: 0 10px;
+        gap: 25px;
+    }
+    
+    .footer-logo img {
+        width: 70px;
+    }
+    
+    .footer-logo h3 {
+        font-size: 1rem;
+        margin-top: 8px;
+    }
+    
+    .social-icons {
+        gap: 12px;
+        margin-top: 15px;
+    }
+    
+    .social-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 1rem;
+        margin: 10px 0;
+    }
+    
+    .sponsor-logo-container {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .sponsor-name {
+        font-size: 0.85rem;
+    }
+    
+    .footer-bottom {
+        margin-top: 15px;
+        padding: 10px 0;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.75rem;
+        margin: 3px 0;
+    }
+
+    /* Steampunk Card Responsive Styles */
+    .container {
+        height: 480px;
+        margin: 20px auto;
+    }
+    
+    .card {
+        width: 90%;
+        max-width: 350px;
+        height: 420px;
+        margin: 0 auto;
+    }
+    
+    .card-title {
+        font-size: 24px;
+        letter-spacing: 1px;
+        max-width: 90%;
+    }
+    
+    .card-text {
+        font-size: 14px;
+        margin-bottom: 15px;
+        max-width: 90%;
+    }
+    
+    .btnn {
+        padding: 8px 16px;
+        font-size: 12px;
+        width: 150px;
+    }
+    
+    .pipe-1 {
+        width: 180px;
+        height: 10px;
+        top: 120px;
+        left: -25%;
+    }
+    
+    .pipe-2 {
+        width: 10px;
+        height: 80px;
+        top: 300px;
+        right: -20px;
+    }
+    
+    .pipe-joint-1 {
+        top: 24px;
+        left: 0px;
+        width: 15px;
+        height: 15px;
+    }
+    
+    .pipe-joint-2 {
+        top: 230px;
+        left: 0px;
+        width: 15px;
+        height: 15px;
+    }
+    
+    .pipe-joint-3 {
+        top: 298px;
+        right: -5px;
+        width: 15px;
+        height: 15px;
+    }
+    
+    .pipe-joint-4 {
+        top: 380px;
+        right: -5px;
+        width: 15px;
+        height: 15px;
+    }
+    
+    .gear-1 {
+        width: 90px;
+        height: 90px;
+        top: -15px;
+        right: -25px;
+    }
+    
+    .gear-2 {
+        width: 80px;
+        height: 80px;
+        bottom: -20px;
+        left: -30px;
+    }
+
+    .scroll-indicator {
+        padding: 6px 12px;
+        bottom: 15px;
+    }
+
+    .countdown-container {
+        width: 95%;
+        padding: var(--spacing-sm);
+    }
+
+    .countdown-title {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+    }
+
+    .countdown-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+
+    .countdown-item {
+        min-width: 60px;
+        padding: 8px;
+    }
+
+    .countdown-number {
+        font-size: 1.5rem;
+    }
+
+    .countdown-label {
+        font-size: 0.7rem;
+    }
+
+    .join-title {
+        font-size: 1.5rem;
+    }
+
+    .join-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .join-buttons .btn {
+        width: 100%;
+    }
+    
+    /* Fiesta page specific extra small device styles */
+    .event-detail {
+        padding: var(--spacing-md);
+    }
+    
+    .event-detail-header {
+        gap: var(--spacing-sm);
+    }
+    
+    .event-image-large {
+        height: 200px;
+    }
+    
+    .event-title {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .event-description {
+        font-size: 0.9rem;
+    }
+    
+    .event-schedule h4,
+    .event-participants h4 {
+        font-size: 0.95rem;
+    }
+    
+    .event-schedule p,
+    .participant-tag {
+        font-size: 0.85rem;
+    }
+    
+    .timeline-item {
+        padding-left: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .timeline-time {
+        font-size: 0.9rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 0.95rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.85rem;
+    }
+}

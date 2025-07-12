@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Nucleus -->
+  <circle cx="100" cy="100" r="15" fill="#e74c3c">
+    <animate attributeName="r" values="15;17;15" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="fill" values="#e74c3c;#c0392b;#e74c3c" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Electron orbits -->
+  <ellipse cx="100" cy="100" rx="80" ry="30" fill="none" stroke="rgba(52, 152, 219, 0.7)" stroke-width="2" transform="rotate(0, 100, 100)">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100" to="360 100 100" dur="15s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="100" cy="100" rx="80" ry="30" fill="none" stroke="rgba(52, 152, 219, 0.7)" stroke-width="2" transform="rotate(60, 100, 100)">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="60 100 100" to="420 100 100" dur="12s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <ellipse cx="100" cy="100" rx="80" ry="30" fill="none" stroke="rgba(52, 152, 219, 0.7)" stroke-width="2" transform="rotate(120, 100, 100)">
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="120 100 100" to="480 100 100" dur="9s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <!-- Electrons -->
+  <circle cx="180" cy="100" r="6" fill="#3498db">
+    <animate attributeName="fill" values="#3498db;#2980b9;#3498db" dur="3s" repeatCount="indefinite" />
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100" to="360 100 100" dur="15s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="180" cy="100" r="6" fill="#3498db">
+    <animate attributeName="fill" values="#3498db;#2980b9;#3498db" dur="3s" repeatCount="indefinite" />
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="60 100 100" to="420 100 100" dur="12s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="180" cy="100" r="6" fill="#3498db">
+    <animate attributeName="fill" values="#3498db;#2980b9;#3498db" dur="3s" repeatCount="indefinite" />
+    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="120 100 100" to="480 100 100" dur="9s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Glow effect -->
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="4" result="blur" />
+    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+  </filter>
+</svg>

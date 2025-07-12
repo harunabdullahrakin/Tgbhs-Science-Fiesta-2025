@@ -1,0 +1,207 @@
+/* Event Card Styling */
+.event-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(25, 29, 43, 0.95), rgba(12, 15, 23, 0.95));
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(52, 152, 219, 0.1),
+                inset 0 0 15px rgba(52, 152, 219, 0.1);
+    overflow: hidden;
+    padding: 0;
+    z-index: 2;
+    color: white;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(52, 152, 219, 0.2),
+                inset 0 0 20px rgba(52, 152, 219, 0.2);
+}
+
+/* Disabled glow */
+.card-glow {
+    display: none !important;
+}
+
+.event-card .card-header {
+    background: linear-gradient(90deg, rgba(25, 29, 43, 0.95), rgba(12, 15, 23, 0.95));
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-card .card-header h3 {
+    color: white;
+    font-family: var(--title-font);
+    font-size: 1.5rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+.badge {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3);
+}
+
+.event-card .card-content {
+    padding: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.event-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    background: rgba(20, 24, 35, 0.6);
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.info-item i {
+    color: white;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.info-item span {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.event-description {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    color: var(--text-light);
+    opacity: 0.8;
+}
+
+.event-description p {
+    margin: 0;
+}
+
+.event-highlights {
+    background: rgba(20, 24, 35, 0.4);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid rgba(52, 152, 219, 0.15);
+}
+
+.event-highlights h4 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.event-highlights ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.event-highlights li {
+    margin-bottom: 10px;
+    color: var(--text-light);
+    opacity: 0.8;
+    position: relative;
+}
+
+.event-highlights li:last-child {
+    margin-bottom: 0;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 25px;
+    background: rgba(20, 24, 35, 0.7);
+    border-top: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.register-btn, .details-btn {
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.register-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+}
+
+.details-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(52, 152, 219, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.details-btn:hover {
+    background: rgba(52, 152, 219, 0.1);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .event-card .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .badge {
+        margin-top: 10px;
+    }
+
+    .event-info {
+        flex-direction: column;
+    }
+
+    .info-item {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .register-btn, .details-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

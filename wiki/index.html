@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wiki - TGBHS Science Fiesta</title>
+    <link rel="icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/mobile-footer.css">
+    <link rel="stylesheet" href="../styles/background.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+ <style>
+    .wiki-hero {
+        background: linear-gradient(to right, rgba(10, 22, 34, 0.9), rgba(10, 22, 34, 0.7)), 
+                    url('/wiki.gif');
+        background-size: cover;
+        background-position: center;
+        min-height: 50vh;
+    }
+
+    .wiki-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-lg);
+    }
+
+    .wiki-section {
+        margin-bottom: var(--spacing-xl);
+        scroll-margin-top: 100px;
+    }
+
+    .wiki-card-large {
+        background-color: var(--card-bg);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-medium);
+        margin-bottom: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wiki-header {
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wiki-dropdown-header {
+        position: relative;
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        transition: background-color 0.3s ease;
+    }
+
+    .wiki-dropdown-header:hover {
+        background-color: rgba(52, 152, 219, 0.1);
+    }
+
+    .wiki-dropdown-header .section-title {
+        margin-bottom: 5px;
+        flex: 1;
+        margin-right: 15px;
+    }
+
+    .wiki-dropdown-header p {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 0;
+        opacity: 0.8;
+    }
+
+    .dropdown-icon {
+        font-size: 1.2rem;
+        color: var(--secondary-color);
+        transition: transform 0.3s ease;
+        margin-right: 15px;
+    }
+
+    .wiki-dropdown-header.active .dropdown-icon {
+        transform: rotate(180deg);
+    }
+
+    .section-badge {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: inline-block;
+    }
+
+    .wiki-dropdown-content {
+        display: none;
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wiki-dropdown-content.active {
+        display: block;
+    }
+
+    .science-concept {
+        margin-bottom: var(--spacing-xl);
+        padding-bottom: var(--spacing-lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .science-concept:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .concept-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .concept-name {
+        color: var(--secondary-color);
+        font-family: var(--title-font);
+        margin-bottom: 0;
+        font-size: 1.5rem;
+    }
+
+    .concept-badge {
+        background-color: rgba(52, 152, 219, 0.2);
+        color: var(--secondary-color);
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .concept-image {
+        margin-bottom: var(--spacing-md);
+        text-align: center;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .concept-image img {
+        max-width: 100%;
+        height: auto;
+        max-height: 300px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .concept-description {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .resource-link {
+        display: inline-block;
+        margin-top: var(--spacing-md);
+        color: var(--secondary-color);
+        transition: all 0.3s ease;
+        font-weight: 500;
+        padding: 5px 0;
+    }
+
+    .wiki-dropdown-header {
+        position: relative;
+        padding: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wiki-dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        padding: 0 1.5rem;
+    }
+
+    .wiki-dropdown-header.active {
+        background-color: rgba(30, 40, 50, 0.8);
+        border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+    }
+
+    .wiki-dropdown-content.active {
+        max-height: 5000px;
+        padding: 1.5rem;
+    }
+
+    .dropdown-icon {
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.3s ease;
+    }
+
+    .wiki-dropdown-header.active .dropdown-icon {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    .section-badge {
+        display: inline-block;
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        margin-left: 1rem;
+        background-color: rgba(52, 152, 219, 0.2);
+        color: #3498db;
+    }
+
+    .resource-link:hover {
+        color: #2980b9;
+        text-decoration: underline;
+    }
+
+    .wiki-content {
+        padding: var(--spacing-lg);
+    }
+
+    .wiki-toc {
+        position: sticky;
+        top: 100px;
+        background-color: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .wiki-toc h3 {
+        margin-bottom: var(--spacing-md);
+        font-family: var(--title-font);
+    }
+
+    .wiki-toc ul {
+        padding-left: var(--spacing-md);
+    }
+
+    .wiki-toc li {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .wiki-toc a {
+        color: var(--text-light);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    .wiki-toc a:hover {
+        color: var(--secondary-color);
+        opacity: 1;
+    }
+
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .wiki-main-content {
+        width: 100%;
+        max-width: 900px;
+    }
+
+    .wiki-sidebar {
+        width: 100%;
+        max-width: 900px;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    @media (max-width: 768px) {
+        body {
+            overflow-x: hidden;
+        }
+
+        main {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .wiki-container {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .grid-container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .wiki-main-content, .wiki-sidebar {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wiki-toc {
+            width: 100%;
+            margin: 0 0 20px 0;
+            border-radius: 0;
+            padding: 15px;
+        }
+
+        .wiki-card-large {
+            box-shadow: 0 10px 30px rgba(0, 0, 150, 0.15);
+            border-radius: 0;
+            overflow: hidden;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            width: 100%;
+            margin: 0 0 20px 0;
+        }
+
+        .wiki-dropdown-header {
+            background: linear-gradient(to right, rgba(10, 22, 34, 0.95), rgba(52, 152, 219, 0.2));
+            padding: 20px 15px;
+        }
+
+        .wiki-dropdown-content {
+            padding: 20px 15px;
+            background-color: rgba(10, 22, 34, 0.97);
+        }
+
+        .section-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            padding: 5px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+        }
+
+        .dropdown-icon {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: #3498db;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+    }
+
+    @media (max-width: 992px) {
+        .wiki-toc {
+            position: relative;
+            top: 0;
+        }
+
+        .concept-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .concept-badge {
+            margin-top: 5px;
+            align-self: flex-start;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="gif-background"></div>
+    <div class="twinkling"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <div class="logo-container">
+                    <img src="/assets/logo.png" alt="Logo" class="logo">
+                </div>
+                <h1 class="brand-text">TGBHS Science Fiesta</h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/wiki/" class="nav-link active">Wiki</a></li>
+                <li class="nav-item"><a href="/fiesta/" class="nav-link">Fiesta</a></li>
+                <li class="nav-item"><a href="/register/" class="nav-link register-btn">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero wiki-hero">
+            <div class="hero-content ">
+                <div class="badge">Knowledge Hub</div>
+                <h1 class="hero-title">SCIENCE <span class="underline">WIKI</span></h1>
+
+            </div>
+        </section>
+
+        <section class="wiki-container">
+            <div class="grid-container">
+                <div class="wiki-sidebar">
+                    <div class="wiki-toc">
+                      <h3>Science Fiesta Syllabus</h3>
+                      <ul>
+    <li><a href="#physics">Physics</a></li>
+    <li><a href="#biology">Biology</a></li>
+    <li><a href="#chemistry">Chemistry</a></li>
+    <li><a href="#mathematics">Mathematics</a></li>
+    <li><a href="#ict">ICT</a></li>
+  </ul>
+  </div>
+                </div>
+                
+                <div class="wiki-main-content">
+                    <div class="wiki-section" id="physics">
+                        <div class="wiki-card-large">
+                            <div class="wiki-dropdown-header">
+                                <h2 class="section-title">Physics </h2>
+                                <p>(sub texts)</p>
+                                <span class="dropdown-icon"><i class="fas fa-chevron-down"></i></span>
+                                <span class="section-badge">ss</span>
+                            </div>
+                            <div class="wiki-dropdown-content">
+                                <div class="science-concept">
+                                    <div class="concept-header">
+                                        <h3 class="concept-name">Force</h3>
+                                        <span class="concept-badge">Classical</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Newton%27s_laws_of_motion.svg/800px-Newton%27s_laws_of_motion.svg.png" alt="Newton's Laws Diagram">
+                                    </div>
+                                    <p class="concept-description">(description)</p>
+                                    <ul>
+                                        <li><strong>First Law (Inertia):</strong> An object remains at rest or in uniform motion unless acted upon by an external force.</li>
+                                        <li><strong>Second Law:</strong> Force equals mass times acceleration (F = ma).</li>
+                                        <li><strong>Third Law:</strong> For every action, there is an equal and opposite reaction.</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Learn more about Newton's Laws →</a>
+                                </div>
+                                
+                                <div class="science-concept">
+                                    <div class="concept-header">
+                                        <h3 class="concept-name">Pressure</h3>
+                                        <span class="concept-badge">Fundamental</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Mechanical_energy.svg/800px-Mechanical_energy.svg.png" alt="Energy Conservation Diagram">
+                                    </div>
+                                    <p class="concept-description">(description)</p>
+                                    <p>Examples of energy transformations:</p>
+                                    <ul>
+                                        <li>Kinetic energy to potential energy (and vice versa)</li>
+                                        <li>Chemical energy to thermal energy</li>
+                                        <li>Electrical energy to light energy</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Explore energy conservation →</a>
+                                </div>
+                                
+                                <div class="science-concept">
+                                    <div class="concept-header">
+                                        <h3 class="concept-name">Energy</h3>
+                                        <span class="concept-badge">Advanced</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wave_properties.svg/800px-Wave_properties.svg.png" alt="Wave Properties Diagram">
+                                    </div>
+                                    <p class="concept-description">(description)</p>
+                                    <p>Key properties include:</p>
+                                    <ul>
+                                        <li>Amplitude: Maximum displacement from equilibrium</li>
+                                        <li>Wavelength: Distance between successive crests</li>
+                                        <li>Frequency: Number of complete cycles per unit time</li>
+                                        <li>Speed: Product of wavelength and frequency</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Dive into wave physics →</a>
+                                </div>
+                       <div class="science-concept">
+                                    <div class="concept-header">
+                                        <h3 class="concept-name">Heat and Temperature</h3>
+                                        <span class="concept-badge">Advanced</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wave_properties.svg/800px-Wave_properties.svg.png" alt="Wave Properties Diagram">
+                                    </div>
+                                    <p class="concept-description">(description)</p>
+                                    <p>Key properties include:</p>
+                                    <ul>
+                                        <li>Amplitude: Maximum displacement from equilibrium</li>
+                                        <li>Wavelength: Distance between successive crests</li>
+                                        <li>Frequency: Number of complete cycles per unit time</li>
+                                        <li>Speed: Product of wavelength and frequency</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Dive into wave physics →</a>
+                                </div>
+                                <div class="science-concept">
+                                    <div class="concept-header">
+                                        <h3 class="concept-name">Modern Physics </h3>
+                                        <span class="concept-badge">Advanced</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wave_properties.svg/800px-Wave_properties.svg.png" alt="Wave Properties Diagram">
+                                    </div>
+                                    <p class="concept-description">(description)</p>
+                                    <p>Key properties include:</p>
+                                    <ul>
+                                        <li>Amplitude: Maximum displacement from equilibrium</li>
+                                        <li>Wavelength: Distance between successive crests</li>
+                                        <li>Frequency: Number of complete cycles per unit time</li>
+                                        <li>Speed: Product of wavelength and frequency</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Dive into wave physics →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="wiki-section" id="biology">
+                        <div class="wiki-card-large">
+                            <div class="wiki-dropdown-header">
+                                <h2 class="section-title">Biology </h2>
+                                <p>Discover the fundamental principles of life sciences</p>
+                                <span class="dropdown-icon"><i class="fas fa-chevron-down"></i></span>
+                                <span class="section-badge">Core Subject</span>
+                            </div>
+                            <div class="wiki-dropdown-content">
+                                <div class="science-concept">
+                                    <div class="concept-header">
+                                        <h3 class="concept-name">Cell Structure and Function</h3>
+                                        <span class="concept-badge">Fundamental</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Animal_Cell.svg/800px-Animal_Cell.svg.png" alt="Cell Structure Diagram">
+                                    </div>
+                                    <p class="concept-description">Cells are the basic units of structure and function in all living organisms. Understanding cell structure is fundamental to biology.</p>
+                                    <p>Key cellular components:</p>
+                                    <ul>
+                                        <li><strong>Cell Membrane:</strong> Controls what enters and exits the cell</li>
+                                        <li><strong>Nucleus:</strong> Contains genetic material (DNA)</li>
+                                        <li><strong>Mitochondria:</strong> The "powerhouse" that produces energy (ATP)</li>
+                                        <li><strong>Ribosomes:</strong> Sites of protein synthesis</li>
+                                        <li><strong>Endoplasmic Reticulum:</strong> Processes and transports proteins</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Explore cell biology →</a>
+                                </div>
+                                
+                                <div class="science-concept">
+                                    <div class="concept-header">
+                                        <h3 class="concept-name">DNA and Genetics</h3>
+                                        <span class="concept-badge">Advanced</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/DNA_chemical_structure.svg/800px-DNA_chemical_structure.svg.png" alt="DNA Structure">
+                                    </div>
+                                    <p class="concept-description">DNA (Deoxyribonucleic Acid) is the hereditary material in humans and almost all other organisms. It carries the genetic instructions for development, functioning, growth, and reproduction.</p>
+                                    <p>Key genetic concepts:</p>
+                                    <ul>
+                                        <li>DNA structure (double helix)</li>
+                                        <li>Genes and chromosomes</li>
+                                        <li>DNA replication</li>
+                                        <li>Transcription and translation</li>
+                                        <li>Inheritance patterns</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Learn about genetics →</a>
+                                </div>
+                                
+                                <div class="science-concept">
+                                    <div class="concept-header">
+                                        <h3 class="concept-name">Evolution and Natural Selection</h3>
+                                        <span class="concept-badge">Foundational</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Darwin%27s_finches.svg/800px-Darwin%27s_finches.svg.png" alt="Darwin's Finches">
+                                    </div>
+                                    <p class="concept-description">Evolution is the process by which different kinds of living organisms developed from earlier forms. Natural selection is one of the basic mechanisms of evolution.</p>
+                                    <p>Key evolutionary concepts:</p>
+                                    <ul>
+                                        <li>Variation within populations</li>
+                                        <li>Adaptation to environmental conditions</li>
+                                        <li>Survival of the fittest</li>
+                                        <li>Speciation</li>
+                                        <li>Evidence for evolution</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Explore evolutionary biology →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="wiki-section" id="chemistry">
+                        <div class="wiki-card-large">
+                            <div class="wiki-dropdown-header">
+                                <h2 class="section-title">Chemistry Lab</h2>
+                                <p>Explore the fascinating world of atoms, molecules, and reactions</p>
+                                <span class="dropdown-icon"><i class="fas fa-chevron-down"></i></span>
+                                <span class="section-badge">Core Subject</span>
+                            </div>
+                            <div class="wiki-dropdown-content">
+                                <div class="science-concept">
+                                    <h3 class="concept-name">Atomic Structure</h3>
+                                    <p class="concept-description">Atoms are the basic units of matter and the defining structure of elements. Understanding atomic structure is fundamental to chemistry.</p>
+                                    <p>Key components:</p>
+                                    <ul>
+                                        <li><strong>Protons:</strong> Positively charged particles in the nucleus</li>
+                                        <li><strong>Neutrons:</strong> Neutral particles in the nucleus</li>
+                                        <li><strong>Electrons:</strong> Negatively charged particles orbiting the nucleus</li>
+                                        <li><strong>Electron shells:</strong> Energy levels where electrons are found</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Discover atomic structure →</a>
+                                </div>
+                                
+                                <div class="science-concept">
+                                    <h3 class="concept-name">Chemical Bonds</h3>
+                                    <p class="concept-description">Chemical bonds are the forces that hold atoms together to form molecules and compounds. Understanding bonding helps explain properties of substances.</p>
+                                    <p>Types of chemical bonds:</p>
+                                    <ul>
+                                        <li><strong>Ionic Bonds:</strong> Transfer of electrons between metals and non-metals</li>
+                                        <li><strong>Covalent Bonds:</strong> Sharing of electrons between non-metals</li>
+                                        <li><strong>Metallic Bonds:</strong> Sharing of electrons among metal atoms</li>
+                                        <li><strong>Hydrogen Bonds:</strong> Weak attractions important in biological systems</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Learn about chemical bonding →</a>
+                                </div>
+                                
+                                <div class="science-concept">
+                                    <h3 class="concept-name">Chemical Reactions</h3>
+                                    <p class="concept-description">Chemical reactions involve the transformation of one or more substances into different substances through the rearrangement of atoms.</p>
+                                    <p>Types of reactions:</p>
+                                    <ul>
+                                        <li>Synthesis (Combination) reactions</li>
+                                        <li>Decomposition reactions</li>
+                                        <li>Single replacement reactions</li>
+                                        <li>Double replacement reactions</li>
+                                        <li>Combustion reactions</li>
+                                        <li>Acid-base reactions</li>
+                                        <li>Redox reactions</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Explore chemical reactions →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="wiki-section" id="competitions">
+                        <div class="wiki-card-large">
+                            <div class="wiki-dropdown-header">
+                                <h2 class="section-title">Science Competition Guide</h2>
+                                <p>Prepare for success at the Science Fiesta competitions</p>
+                                <span class="dropdown-icon"><i class="fas fa-chevron-down"></i></span>
+                                <span class="section-badge">Events</span>
+                            </div>
+                            <div class="wiki-dropdown-content">
+                                <div class="science-concept">
+                                    <h3 class="concept-name">Science Quiz Competition</h3>
+                                    <p class="concept-description">Test your knowledge in various science disciplines through our multi-round quiz competition.</p>
+                                    <p>Preparation tips:</p>
+                                    <ul>
+                                        <li>Study core scientific concepts across physics, chemistry, and biology</li>
+                                        <li>Focus on famous scientists and their discoveries</li>
+                                        <li>Stay updated on recent scientific breakthroughs</li>
+                                        <li>Practice with sample questions from previous years</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Access practice quiz questions →</a>
+                                </div>
+                                
+                                <div class="science-concept">
+                                    <h3 class="concept-name">Science Project Exhibition</h3>
+                                    <p class="concept-description">Showcase your scientific research or engineering project at our exhibition. Projects are judged on creativity, scientific rigor, and presentation.</p>
+                                    <p>Project guidelines:</p>
+                                    <ul>
+                                        <li>Choose a clear research question or problem to solve</li>
+                                        <li>Follow the scientific method or engineering design process</li>
+                                        <li>Document your methodology and results thoroughly</li>
+                                        <li>Prepare an engaging visual display and presentation</li>
+                                        <li>Be ready to answer questions from judges</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">View project submission guidelines →</a>
+                                </div>
+                                
+                                <div class="science-concept">
+                                    <h3 class="concept-name">Science Debate Competition</h3>
+                                    <p class="concept-description">Develop your critical thinking and communication skills by participating in our science debate competition. Teams will debate contemporary scientific topics and ethical issues.</p>
+                                    <p>Debate preparation:</p>
+                                    <ul>
+                                        <li>Research both sides of scientific controversies</li>
+                                        <li>Develop strong, evidence-based arguments</li>
+                                        <li>Practice refuting common counterarguments</li>
+                                        <li>Work on clear, concise communication</li>
+                                        <li>Familiarize yourself with debate formats and rules</li>
+                                    </ul>
+                                    <a href="#" class="resource-link">Download debate topics and rules →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="scientific-footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <div class="logo-container">
+                            <img src="/assets/logo.png" alt="Logo" class="logo">
+                        </div>
+                        <h3>TGBHS Science Fiesta</h3>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/15utQWCSGd/" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/tgbhs.science.fiesta.2025?igsh=cGNic3hzaGE0amFx" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                    </div>
+                </div>
+                
+
+                <div class="footer-nav">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/wiki/">Wiki</a></li>
+                        <li><a href="/fiesta/">Fiesta</a></li>
+                        <li><a href="/register/">Register</a></li>
+                    </ul>
+                </div>
+                
+
+<div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@tgbhssciencefiesta.com</li>
+                        <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Thakurgaon Govt Boys' High School</li>
+                    </ul>
+                </div>
+                
+
+  <!--              <div class="footer-sponsors">
+                    <h4>Our Sponsors</h4>
+                    <ul class="sponsors-list">
+                        <li>
+                            <div class="sponsor-circle"></div>
+                            <span class="sponsor-name gold">TechLabs Inc.</span>
+                        </li>
+                        <li>
+                            <div class="sponsor-circle"></div>
+                            <span class="sponsor-name silver">ScienceHub</span>
+                        </li>
+                        <li>
+                            <div class="sponsor-circle"></div>
+                            <span class="sponsor-name bronze">EduWorld</span>
+                        </li>
+                    </ul>
+                </div> -->
+            </div> 
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TGBHS Science Fiesta. All rights reserved.</p>
+                <p>Developed with <i class="fa-solid fa-heart"></i> by <a href="https://www.harunabdullah.is-a.dev" style="color:#5c5c5a;font-weight:700;">Harun Abdullah</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/animations.js"></script>
+    <script src="../js/main.js"></script>
+    
+<script>
+        // JavaScript for Wiki dropdowns
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all dropdown headers and contents
+            const dropdownHeaders = document.querySelectorAll('.wiki-dropdown-header');
+            const dropdownContents = document.querySelectorAll('.wiki-dropdown-content');
+            
+            // Close all sections by default
+            dropdownContents.forEach(content => {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            });
+            
+            // Update icons to down arrows
+            document.querySelectorAll('.dropdown-icon i').forEach(icon => {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            });
+            
+            // Add click event to each header
+            dropdownHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.dropdown-icon i');
+                
+                // Add click event
+                header.addEventListener('click', function() {
+                    // Toggle active class and display
+                    this.classList.toggle('active');
+                    content.classList.toggle('active');
+                    
+                    if (content.style.display === 'none') {
+                        content.style.display = 'block';
+                        if (icon) {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    } else {
+                        content.style.display = 'none';
+                        if (icon) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        }
+                    }
+                    
+                    // Smooth scroll to section if it's being opened
+                    if (this.classList.contains('active')) {
+                        const sectionId = this.closest('.wiki-section').id;
+                        const yOffset = -80; // Header offset
+                        const element = document.getElementById(sectionId);
+                        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }
+                });
+            });
+            
+            // Check if URL has hash to open specific section
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    const header = section.querySelector('.wiki-dropdown-header');
+                    const content = section.querySelector('.wiki-dropdown-content');
+                    
+                    // Open the section
+                    header.classList.add('active');
+                    content.classList.add('active');
+                    content.style.display = 'block';
+                    
+                    // Update icon
+                    const icon = header.querySelector('.dropdown-icon i');
+                    if (icon) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                    
+                    // Scroll to it
+                    setTimeout(() => {
+                        const yOffset = -80;
+                        const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }, 300);
+                }
+            }
+            
+            // Update TOC links to open corresponding sections
+            const tocLinks = document.querySelectorAll('.wiki-toc a');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        const header = targetSection.querySelector('.wiki-dropdown-header');
+                        const content = targetSection.querySelector('.wiki-dropdown-content');
+                        
+                        // Open the target section
+                        header.classList.add('active');
+                        content.classList.add('active');
+                        
+                        // Scroll to it
+                        const yOffset = -80;
+                        const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>
