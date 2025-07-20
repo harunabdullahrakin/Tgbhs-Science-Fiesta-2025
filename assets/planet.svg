@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Planet -->
+  <circle cx="50" cy="50" r="40" fill="url(#planet-gradient)">
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="5s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Rings -->
+  <ellipse cx="50" cy="50" rx="50" ry="15" fill="none" stroke="url(#ring-gradient)" stroke-width="2" transform="rotate(-20, 50, 50)">
+    <animate attributeName="stroke-opacity" values="0.7;0.9;0.7" dur="3s" repeatCount="indefinite" />
+  </ellipse>
+  
+  <!-- Craters/Surface details -->
+  <circle cx="35" cy="40" r="8" fill="url(#crater-gradient)" opacity="0.6" />
+  <circle cx="60" cy="65" r="10" fill="url(#crater-gradient)" opacity="0.4" />
+  <circle cx="70" cy="40" r="5" fill="url(#crater-gradient)" opacity="0.5" />
+  <circle cx="30" cy="60" r="7" fill="url(#crater-gradient)" opacity="0.5" />
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="planet-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3498db" />
+      <stop offset="100%" stop-color="#2c3e50" />
+    </linearGradient>
+    
+    <linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="0.1" />
+      <stop offset="50%" stop-color="#e74c3c" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#3498db" stop-opacity="0.1" />
+    </linearGradient>
+    
+    <linearGradient id="crater-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2c3e50" />
+      <stop offset="100%" stop-color="#2980b9" />
+    </linearGradient>
+  </defs>
+</svg>

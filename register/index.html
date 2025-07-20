@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Register - TGBHS Science Fiesta</title>
+    <link rel="icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/mobile-footer.css">
+    <link rel="stylesheet" href="../styles/background.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+    .register-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: var(--spacing-lg);
+    }
+
+    .registration-form {
+        background-color: var(--card-bg);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-medium);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .form-header {
+        background-color: rgba(52, 152, 219, 0.2);
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .form-header h2 {
+        margin-bottom: var(--spacing-sm);
+        color: var(--secondary-color);
+        font-family: var(--title-font);
+    }
+
+    .form-content {
+        padding: var(--spacing-lg);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: var(--spacing-sm);
+        font-weight: 500;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: var(--spacing-md);
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--text-light);
+        font-family: var(--body-font);
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+    }
+
+    .form-check {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .form-check input {
+        margin-right: var(--spacing-sm);
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+    }
+
+    .form-col {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .submit-btn {
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        padding: var(--spacing-md) var(--spacing-xl);
+        border-radius: var(--radius-md);
+        font-family: var(--title-font);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        margin-top: var(--spacing-md);
+    }
+
+    .submit-btn:hover {
+        background-color: #2980b9;
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-glow);
+    }
+
+    select.form-control {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(236, 240, 241, 0.8)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1rem;
+        padding-right: 2.5rem;
+    }
+
+    .form-note {
+        margin-top: var(--spacing-sm);
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    .registration-info {
+        background-color: rgba(52, 152, 219, 0.1);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .info-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .info-item i {
+        color: var(--secondary-color);
+        margin-right: var(--spacing-md);
+        margin-top: 4px;
+    }
+
+    .info-item-content {
+        flex: 1;
+    }
+
+    .info-item-content h4 {
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--title-font);
+    }
+
+    .floating-atoms {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .atom {
+        position: absolute;
+        opacity: 0.3;
+        animation: float-random linear infinite;
+    }
+
+    .atom:nth-child(1) {
+        top: 10%;
+        left: 10%;
+        animation-duration: 20s;
+    }
+
+    .atom:nth-child(2) {
+        top: 70%;
+        right: 10%;
+        animation-duration: 15s;
+    }
+
+    .atom:nth-child(3) {
+        bottom: 20%;
+        left: 20%;
+        animation-duration: 25s;
+    }
+
+    @keyframes float-random {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        25% { transform: translate(50px, 25px) rotate(90deg); }
+        50% { transform: translate(0, 50px) rotate(180deg); }
+        75% { transform: translate(-50px, 25px) rotate(270deg); }
+        100% { transform: translate(0, 0) rotate(360deg); }
+    }
+</style>
+
+</head>
+<body>
+    <div class="gif-background"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <div class="logo-container">
+                    <img src="/assets/logo.png" alt="Logo" class="logo">
+                </div>
+                <h1 class="brand-text">TGBHS Science Fiesta</h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/wiki/" class="nav-link">Wiki</a></li>
+                <li class="nav-item"><a href="/fiesta/" class="nav-link">Fiesta</a></li>
+                <li class="nav-item"><a href="/register/" class="nav-link active register-btn">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+<style>
+  .register-hero {
+            background: linear-gradient(to right, rgba(10, 22, 34, 0.9), rgba(10, 22, 34, 0.7)), 
+                        url('/register.gif');
+            background-size: cover;
+            background-position: center;
+            min-height: 50vh;
+        }
+</style>
+    <main>
+        <section class="hero register-hero" >
+            <div class="hero-content " >
+                <div class="badge">TGBHS 26</div>
+                <h1 class="hero-title"><span class="underline">REGISTER</span> NOW</h1>
+                <p class="hero-subtitle">Join us for an exciting celebration of science and innovation</p>
+            </div>
+
+        </section>
+
+        <section class="register-container">
+            <div class="registration-info">
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-lg);">Registration Information</h2>
+                
+                <div class="info-item">
+                    <i class="fas fa-calendar-alt fa-2x"></i>
+                    <div class="info-item-content">
+                        <h4>Event Dates</h4>
+                        <p>16 August 2025</p>
+                        <p>9:00 AM - 7:00 PM</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                    <div class="info-item-content">
+                        <h4>Location</h4>
+
+                        <p>Thakurgaon Govt. Boys' High School Campus</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-ticket-alt fa-2x"></i>
+                    <div class="info-item-content">
+                        <h4>Registration Fee</h4>
+                        <p>Students: 100tk</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-info-circle fa-2x"></i>
+                    <div class="info-item-content">
+                        <h4>Registration deadline</h4>
+                        <p>12th August 2025</p>
+                        <br>
+
+
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: var(--spacing-lg);">
+        
+        <button class="submit-btn">Register Now</button>
+     
+    </div>
+    </div>
+                
+            </div>
+            
+
+            
+            <div class="glass-panel" style="text-align: center; padding: var(--spacing-lg);">
+                <h3 style="margin-bottom: var(--spacing-md);">Need Help?</h3>
+                <p style="margin-bottom: var(--spacing-md);">If you have any questions about registration or the event, please contact us:</p>
+                <p><i class="fas fa-envelope"></i> help-desk@tgbhssciencefiesta.com</p>
+                <p><i class="fas fa-phone"></i> 01786098187</p>
+                <p><i class="fas fa-phone"></i> 01760587918</p>
+            </div>
+            <div class="registration-form" style="margin-top:25px;">
+                <div class="form-header">
+                    <h2>Contact Form</h2>
+                    <p>Please fill out all required forms with legal information.</p>
+                </div>
+                
+                <div class="form-content">
+  <form action="https://formspree.io/f/xanbqozp" method="POST">
+    <div class="form-row">
+      <div class="form-col">
+        <div class="form-group">
+          <label for="firstName">FullName <span style="color: #e74c3c;">*</span></label>
+          <input type="text" id="firstName" name="FullName" class="form-control" required>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-col">
+        <div class="form-group">
+          <label for="email">Email Address <span style="color: #e74c3c;">*</span></label>
+          <input type="email" id="email" name="Email" class="form-control" required>
+        </div>
+      </div>
+    
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-col">
+
+      </div>
+      <div class="form-col">
+        <div class="form-group">
+          <label for="participantType">User Type <span style="color: #e74c3c;">*</span></label>
+          <select id="participantType" name="participantType" class="form-control" required>
+            <option value="">Select User type</option>
+            <option value="student">Student</option>
+            
+            <option value="teacher/parent">Teacher/Parent</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="specialRequirements">Description</label>
+      <textarea id="specialRequirements" name="Description" class="form-control" rows="3" required></textarea>
+
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" id="termsAgree" name="termsAgree" required>
+      <label for="termsAgree">I agree to the <a href="#" style="color: var(--secondary-color);">terms and conditions</a> <span style="color: #e74c3c;">*</span></label>
+    </div>
+
+    <div style="text-align: center; margin-top: var(--spacing-lg);">
+      <button type="submit" class="submit-btn" style="background-color:#a6961e;color:black;">Submit</button>
+     
+    </div>
+
+  </form>
+
+</div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="scientific-footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <div class="logo-container">
+                            <img src="/assets/logo.png" alt="Logo" class="logo">
+                        </div>
+                        <h3>TGBHS Science Fiesta</h3>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/15utQWCSGd/" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/tgbhs.science.fiesta.2025?igsh=cGNic3hzaGE0amFx" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                    </div>
+                </div>
+                
+
+                <div class="footer-nav">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/wiki/">Wiki</a></li>
+                        <li><a href="/fiesta/">Fiesta</a></li>
+                        <li><a href="/register/">Register</a></li>
+                    </ul>
+                </div>
+                
+
+<div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+
+                        <li><i class="fas fa-phone"></i> 01760587918</li>
+                        <li><i class="fas fa-phone"></i> 01786098187</li>
+                        <li><i class="fas fa-envelope"></i> help-desk@tgbhssciencefiesta.com</li>
+<a href="https://www.google.com/maps/place/Thakurgaon+Government+Boys+High+School,+Bangabandhu+Rd,+Thakurgaon+5100/@26.0322706,88.4659199,17z/data=!4m6!3m5!1s0x39e4c01dec51ed33:0x7ab7cd1f21ce619d!8m2!3d26.0322706!4d88.4659199!16s%2Fg%2F11c67wcwp4?gl=bd&utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MDcxNl8wIJvbDyoASAJQAQ%3D%3D"><li><i class="fas fa-map-marker-alt"></i> Thakurgaon Govt Boys' High School</li></a>
+
+                    </ul>
+                </div>
+                
+
+  <!--              <div class="footer-sponsors">
+                    <h4>Our Sponsors</h4>
+                    <ul class="sponsors-list">
+                        <li>
+                            <div class="sponsor-circle"></div>
+                            <span class="sponsor-name gold">TechLabs Inc.</span>
+                        </li>
+                        <li>
+                            <div class="sponsor-circle"></div>
+                            <span class="sponsor-name silver">ScienceHub</span>
+                        </li>
+                        <li>
+                            <div class="sponsor-circle"></div>
+                            <span class="sponsor-name bronze">EduWorld</span>
+                        </li>
+                    </ul>
+                </div> -->
+            </div> 
+            
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 TGBHS Science Fiesta. All rights reserved.</p>
+                <p>Developed with <i class="fa-solid fa-heart"></i> by <a href="https://www.harunabdullah.is-a.dev" style="color:#5c5c5a;font-weight:700;">Harun Abdullah</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/animations.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const institution = document.getElementById('institution').value.trim();
+        const ageGroup = document.getElementById('ageGroup').value;
+        const participantType = document.getElementById('participantType').value;
+        
+        const eventCheckboxes = document.querySelectorAll('input[name="events[]"]:checked');
+        
+        if (!firstName || !lastName || !email || !institution || !ageGroup || !participantType) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+        
+        if (eventCheckboxes.length === 0) {
+            alert('Please select at least one event of interest.');
+            return;
+        }
+        
+        const submitButton = document.querySelector('.submit-btn');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Processing...';
+        
+        setTimeout(() => {
+            alert('Thank you for registering for the TGBHS Science Fiesta! A confirmation email will be sent shortly.');
+            document.getElementById('registrationForm').reset();
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit Registration';
+        }, 1500);
+    });
+</script>
+
+</body>
+</html>

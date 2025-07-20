@@ -1,0 +1,222 @@
+/* Footer Reset for Mobile */
+@media (max-width: 768px) {
+  /* First completely hide existing footer structure */
+  .footer-content {
+    display: none !important;
+  }
+  
+  /* Hide original footer bottom */
+  .footer-bottom {
+    display: none !important;
+  }
+  
+  /* Re-create full footer with mobile layout that matches screenshot */
+  .scientific-footer {
+    background-color: var(--background-darker);
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 30px 20px 20px !important;
+    text-align: center !important;
+  }
+
+  /* Create new container for footer content */
+  .scientific-footer::before {
+    content: "";
+    display: none;
+  }
+  
+  /* Logo styling */
+  .scientific-footer::after {
+    content: "" !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    background-image: url('../attached_assets/Main\ Logo\ transparent.png') !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    width: 80px !important;
+    height: 80px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  /* Site name styling */
+  .scientific-footer .container {
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .scientific-footer .container::before {
+    content: "TGBHS Science Fiesta" !important;
+    display: block !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 15px !important;
+    color: #ffffff !important;
+  }
+  
+  /* Social icons */
+  .scientific-footer .container::after {
+    content: "" !important;
+    display: block !important;
+    margin: 0 auto 25px !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  
+  /* Ensure social icons are shown */
+  .social-icons {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin: 15px auto 25px !important;
+  }
+  
+  .social-icon {
+    width: 35px !important;
+    height: 35px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .social-icon.facebook {
+    background-color: #1877f2 !important;
+  }
+  
+  .social-icon.twitter {
+    background-color: #1da1f2 !important;
+  }
+  
+  .social-icon.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+  }
+  
+  .social-icon.youtube {
+    background-color: #ff0000 !important;
+  }
+  
+  .social-icon.discord {
+    background-color: #5865f2 !important;
+  }
+  
+  /* Navigation section header */
+  .scientific-footer .container::after {
+    content: "Navigate" !important;
+    display: block !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    margin-bottom: 10px !important;
+    color: var(--secondary-color) !important;
+  }
+  
+  /* Navigation links - manually add them */
+  .navigate-links {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 25px !important;
+  }
+  
+  .navigate-links a {
+    color: #fff !important;
+    text-decoration: none !important;
+    margin-bottom: 8px !important;
+    opacity: 0.8 !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Contact section */
+  .contact-section {
+    margin-bottom: 25px !important;
+  }
+  
+  .contact-section h4 {
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 1rem !important;
+    margin-bottom: 10px !important;
+    color: var(--secondary-color) !important;
+  }
+  
+  .contact-section p {
+    color: #fff !important;
+    margin-bottom: 8px !important;
+    opacity: 0.8 !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Sponsors section */
+  .sponsors-section {
+    margin-bottom: 25px !important;
+  }
+  
+  .sponsors-section h4 {
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 1rem !important;
+    margin-bottom: 10px !important;
+    color: var(--secondary-color) !important;
+  }
+  
+  .sponsor-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .sponsor-circle {
+    width: 20px !important;
+    height: 20px !important;
+    background-color: #fff !important;
+    border-radius: 50% !important;
+    margin-right: 8px !important;
+  }
+  
+  .gold-sponsor {
+    color: #FFD700 !important;
+  }
+  
+  .silver-sponsor {
+    color: #C0C0C0 !important;
+  }
+  
+  .bronze-sponsor {
+    color: #CD7F32 !important;
+  }
+  
+  /* Copyright section */
+  .copyright-text {
+    text-align: center !important;
+    font-size: 0.75rem !important;
+    opacity: 0.7 !important;
+    margin-top: 15px !important;
+    margin-bottom: 3px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-top: 15px !important;
+    width: 100% !important;
+  }
+  
+  .copyright-design {
+    text-align: center !important;
+    font-size: 0.75rem !important;
+    opacity: 0.7 !important;
+    margin: 3px 0 !important;
+  }
+}
+
+/* Inject specific HTML for mobile - this is necessary because the HTML structure needs to change */
+@media (max-width: 768px) {
+  /* Add styles for the injected elements */
+  .mobile-footer-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+}

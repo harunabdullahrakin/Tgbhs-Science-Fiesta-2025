@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wiki - TGBHS Science Fiesta</title>
+    <link rel="icon" type="image/x-icon" href="/assets/logo.ico">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/mobile-footer.css">
+    <link rel="stylesheet" href="../styles/background.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+ <style>
+    .wiki-hero {
+        background: linear-gradient(to right, rgba(10, 22, 34, 0.9), rgba(10, 22, 34, 0.7)), 
+                    url('/wiki.gif');
+        background-size: cover;
+        background-position: center;
+        min-height: 50vh;
+    }
+
+    .wiki-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-lg);
+    }
+
+    .wiki-section {
+        margin-bottom: var(--spacing-xl);
+        scroll-margin-top: 100px;
+    }
+
+    .wiki-card-large {
+        background-color: var(--card-bg);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-medium);
+        margin-bottom: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wiki-header {
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wiki-dropdown-header {
+        position: relative;
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        transition: background-color 0.3s ease;
+    }
+
+    .wiki-dropdown-header:hover {
+        background-color: rgba(52, 152, 219, 0.1);
+    }
+
+    .wiki-dropdown-header .section-title {
+        margin-bottom: 5px;
+        flex: 1;
+        margin-right: 15px;
+    }
+
+    .wiki-dropdown-header p {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 0;
+        opacity: 0.8;
+    }
+
+    .dropdown-icon {
+        font-size: 1.2rem;
+        color: var(--secondary-color);
+        transition: transform 0.3s ease;
+        margin-right: 15px;
+    }
+
+    .wiki-dropdown-header.active .dropdown-icon {
+        transform: rotate(180deg);
+    }
+
+    .section-badge {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: inline-block;
+    }
+
+    .wiki-dropdown-content {
+        display: none;
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wiki-dropdown-content.active {
+        display: block;
+    }
+
+    .science-concept {
+        margin-bottom: var(--spacing-xl);
+        padding-bottom: var(--spacing-lg);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .science-concept:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .concept-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .concept-name {
+        color: var(--secondary-color);
+        font-family: var(--title-font);
+        margin-bottom: 0;
+        font-size: 1.5rem;
+    }
+
+    .concept-badge {
+        background-color: rgba(52, 152, 219, 0.2);
+        color: var(--secondary-color);
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .concept-image {
+        margin-bottom: var(--spacing-md);
+        text-align: center;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .concept-image img {
+        max-width: 100%;
+        height: auto;
+        max-height: 300px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .concept-description {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .resource-link {
+        display: inline-block;
+        margin-top: var(--spacing-md);
+        color: var(--secondary-color);
+        transition: all 0.3s ease;
+        font-weight: 500;
+        padding: 5px 0;
+    }
+
+    .wiki-dropdown-header {
+        position: relative;
+        padding: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wiki-dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        padding: 0 1.5rem;
+    }
+
+    .wiki-dropdown-header.active {
+        background-color: rgba(30, 40, 50, 0.8);
+        border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+    }
+
+    .wiki-dropdown-content.active {
+        max-height: 5000px;
+        padding: 1.5rem;
+    }
+
+    .dropdown-icon {
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.3s ease;
+    }
+
+    .wiki-dropdown-header.active .dropdown-icon {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    .section-badge {
+        display: inline-block;
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        margin-left: 1rem;
+        background-color: rgba(52, 152, 219, 0.2);
+        color: #3498db;
+    }
+
+    .resource-link:hover {
+        color: #2980b9;
+        text-decoration: underline;
+    }
+
+    .wiki-content {
+        padding: var(--spacing-lg);
+    }
+
+    .wiki-toc {
+        font-size: 15px;
+        position: sticky;
+        top: 100px;
+        background-color: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .wiki-toc h3 {
+        margin-bottom: var(--spacing-md);
+        font-family: var(--title-font);
+    }
+
+    .wiki-toc ul {
+        padding-left: var(--spacing-md);
+    }
+
+    .wiki-toc li {
+        font-size:10px;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .wiki-toc a {
+        color: var(--text-light);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    .wiki-toc a:hover {
+        color: var(--secondary-color);
+        opacity: 1;
+    }
+
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .wiki-main-content {
+        width: 100%;
+        max-width: 900px;
+    }
+
+    .wiki-sidebar {
+        width: 100%;
+        max-width: 900px;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    @media (max-width: 768px) {
+        body {
+            overflow-x: hidden;
+        }
+
+        main {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .wiki-container {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .grid-container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .wiki-main-content, .wiki-sidebar {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wiki-toc {
+            width: 100%;
+            margin: 0 0 20px 0;
+            border-radius: 0;
+            padding: 15px;
+        }
+
+        .wiki-card-large {
+            box-shadow: 0 10px 30px rgba(0, 0, 150, 0.15);
+            border-radius: 0;
+            overflow: hidden;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            width: 100%;
+            margin: 0 0 20px 0;
+        }
+
+        .wiki-dropdown-header {
+            background: linear-gradient(to right, rgba(10, 22, 34, 0.95), rgba(52, 152, 219, 0.2));
+            padding: 20px 15px;
+        }
+
+        .wiki-dropdown-content {
+            padding: 20px 15px;
+            background-color: rgba(10, 22, 34, 0.97);
+        }
+
+        .section-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            padding: 5px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+        }
+
+        .dropdown-icon {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: #3498db;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+    }
+
+    @media (max-width: 992px) {
+        .wiki-toc {
+            position: relative;
+            top: 0;
+        }
+
+        .concept-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .concept-badge {
+            margin-top: 5px;
+            align-self: flex-start;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="gif-background"></div>
+    <div class="twinkling"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <div class="logo-container">
+                    <img src="/assets/logo.png" alt="Logo" class="logo">
+                </div>
+                <h1 class="brand-text">TGBHS Science Fiesta</h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/wiki/" class="nav-link active">Wiki</a></li>
+                <li class="nav-item"><a href="/fiesta/" class="nav-link">Fiesta</a></li>
+                <li class="nav-item"><a href="/register/" class="nav-link register-btn">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero wiki-hero">
+            <div class="hero-content ">
+                <div class="badge">Knowledge Hub</div>
+                <h1 class="hero-title">SCIENCE <span class="underline">WIKI</span></h1>
+
+            </div>
+        </section>
+
+        <section class="wiki-container">
+            <div class="grid-container">
+                <div class="wiki-sidebar">
+                    <div class="wiki-toc">
+                      <h3>Science Fiesta Wiki</h3>
+                      <ul>
+<li><a href="#">Overview of TGBHS Science Fiesta</a></li>
+<li><a href="#">How to Register for the Fiesta</a></li>
+
+<li><a href="#">Syllabus and Timeline</a></li>
+<li><a href="#">Contact Details and Participant Support</a></li>
+
+
+  </ul>
+  </div>
+                </div>
+                
+                <div class="wiki-main-content">
+                    <div class="wiki-section" id="tgbhs">
+                        <div class="wiki-card-large">
+                            <div class="wiki-dropdown-header">
+                                <h2 class="section-title">TGBHS Science Fiesta </h2>
+                                <p></p>
+                                <span class="dropdown-icon"><i class="fas fa-chevron-down"></i></span>
+                              
+                            </div>
+                            <div class="wiki-dropdown-content">
+                                <div class="science-concept">
+                                    <div class="concept-header">
+
+                                        <span class="concept-badge">informative</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <iframe width="100%" height="300" src="https://www.youtube.com/embed/tPvhTNlWDtk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                    <p class="concept-description">TGBHS Science Fiesta is an exciting science-based event organized by Thakurgaon Government Boys' High School. It brings together students to explore, showcase, and compete in various science-related activities such as projects, experiments, quizzes, and exhibitions, encouraging innovation, creativity, and scientific thinking among young minds.</p>
+
+                                </div>
+                                
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="wiki-section" id="registration-guide">
+                        <div class="wiki-card-large">
+                            <div class="wiki-dropdown-header">
+                                <h2 class="section-title">Registration Guide </h2>
+
+                                <span class="dropdown-icon"><i class="fas fa-chevron-down"></i></span>
+
+                            </div>
+                            <div class="wiki-dropdown-content">
+                                <div class="science-concept">
+                                    <div class="concept-header">
+                                        
+                                        <span class="concept-badge">Fundamental</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://i.ibb.co/Pzbz5QXf/6976378-4565.jpg" alt="imageeeeniggaihateniggas">
+                                    </div>
+                                    <p class="concept-description"></p>
+                                  
+<p>Get ready to showcase your passion for science at the <strong>TGBHS Science Fiesta</strong>! Registration is quick and simple.</p>
+
+<p>Follow the guide below to complete your registration:</p>
+
+<ul><br>
+    <li><strong>Registration Fee:</strong> ৳100 (One Hundred Taka)</li><br>
+    <li><strong>Required Info:</strong> Full name, school name, class, phone number (email optional)</li><br>
+    <li><strong>Payment Methods:</strong> bKash, Nagad, Rocket, bank transfer, debit/credit cards</li><br>
+    <li><strong>Platform:</strong> Registration will be done via EventSpark</li><br>
+    <li><strong>Confirmation:</strong> You'll receive a confirmation message after successful registration</li><br>
+</ul>
+
+<p>Make sure to keep your transaction ID or receipt as proof of payment. We look forward to your participation!</p>
+
+    <div style="text-align: center; margin-top: var(--spacing-lg);">
+      <button onclick="window.location.href='https://tgbhssciencefiesta.com/register';" class="submit-btn" style="background-color:#286ac7;color:white;padding:13px 48px 13px 48px;border:1px transparent;border-radius:20px;font-weight: bold;">Register</button>
+     
+    </div>
+
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="wiki-section" id="syllabus-&-timeline">
+                        <div class="wiki-card-large">
+                            <div class="wiki-dropdown-header">
+                                <h2 class="section-title">Syllabus & Timeline </h2>
+
+                                <span class="dropdown-icon"><i class="fas fa-chevron-down"></i></span>
+
+                            </div>
+                            <div class="wiki-dropdown-content">
+                                <div class="science-concept">
+                                    <div class="concept-header">
+                                        
+                                        <span class="concept-badge">Preparation</span>
+                                    </div>
+                                    <div class="concept-image">
+                                        <img src="https://i.ibb.co/QFWMGbGw/3974104.jpg" alt="Cell Structure Diagram">
+                                    </div>
+                                    
+                                    <ul>
+                                        <li><strong>FUTURE FUSIONS : Class 6-8 </strong></li>
+                                        <li><strong>VELOCITY RAPTORS : Class 9 - 10</strong></li>
+                                        
+                                        
+                                    </ul>
+                                    <a href="/fiesta" class="resource-link">check the syllabus →</a>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    <div class="wiki-section" id="contact-support">
+                        <div class="wiki-card-large">
+                            <div class="wiki-dropdown-header">
+                                <h2 class="section-title">Contact & Support</h2>
+         <span class="dropdown-icon"><i class="fas fa-chevron-down"></i></span>
+
+                            </div>
+                            <div class="wiki-dropdown-content">
+                                <div class="science-concept">
+                                    <h3 class="concept-name">Information</h3>
+                                    <p class="concept-description">contact info are listed below!</p>
+                                    <p>Number:<br> +8801786098187</p><br>
+                                    <ul>
+                                        <li>E-mail: <br>help-desk@tgbhssciencefiesta.com</li><br>
+                                        <li>Contact Form:<br> <a href="/register">click here --> [Contact Form]</a></li><br>
+
+
+                                    </ul>
+     </div>
+                                
+    </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="scientific-footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <div class="logo-container">
+                            <img src="/assets/logo.png" alt="Logo" class="logo">
+                        </div>
+                        <h3>TGBHS Science Fiesta</h3>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/15utQWCSGd/" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/tgbhs.science.fiesta.2025?igsh=cGNic3hzaGE0amFx" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                    </div>
+                </div>
+                
+
+                <div class="footer-nav">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/wiki/">Wiki</a></li>
+                        <li><a href="/fiesta/">Fiesta</a></li>
+                        <li><a href="/register/">Register</a></li>
+                    </ul>
+                </div>
+                
+
+<div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> help-desk@tgbhssciencefiesta.com</li>
+                        <li><i class="fas fa-phone"></i> 01760587918</li>
+                        <li><i class="fas fa-phone"></i> 01786098187</li>
+<a href="https://www.google.com/maps/place/Thakurgaon+Government+Boys+High+School,+Bangabandhu+Rd,+Thakurgaon+5100/@26.0322706,88.4659199,17z/data=!4m6!3m5!1s0x39e4c01dec51ed33:0x7ab7cd1f21ce619d!8m2!3d26.0322706!4d88.4659199!16s%2Fg%2F11c67wcwp4?gl=bd&utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MDcxNl8wIJvbDyoASAJQAQ%3D%3D"><li><i class="fas fa-map-marker-alt"></i> Thakurgaon Govt Boys' High School</li></a>
+
+                    </ul>
+                </div>
+                
+
+  <!--              <div class="footer-sponsors">
+                    <h4>Our Sponsors</h4>
+                    <ul class="sponsors-list">
+                        <li>
+                            <div class="sponsor-circle"></div>
+                            <span class="sponsor-name gold">TechLabs Inc.</span>
+                        </li>
+                        <li>
+                            <div class="sponsor-circle"></div>
+                            <span class="sponsor-name silver">ScienceHub</span>
+                        </li>
+                        <li>
+                            <div class="sponsor-circle"></div>
+                            <span class="sponsor-name bronze">EduWorld</span>
+                        </li>
+                    </ul>
+                </div> -->
+            </div> 
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TGBHS Science Fiesta. All rights reserved.</p>
+                <p>Developed with <i class="fa-solid fa-heart"></i> by <a href="https://www.harunabdullah.is-a.dev" style="color:#5c5c5a;font-weight:700;">Harun Abdullah</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/animations.js"></script>
+    <script src="../js/main.js"></script>
+    
+<script>
+        // JavaScript for Wiki dropdowns
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all dropdown headers and contents
+            const dropdownHeaders = document.querySelectorAll('.wiki-dropdown-header');
+            const dropdownContents = document.querySelectorAll('.wiki-dropdown-content');
+            
+            // Close all sections by default
+            dropdownContents.forEach(content => {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            });
+            
+            // Update icons to down arrows
+            document.querySelectorAll('.dropdown-icon i').forEach(icon => {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            });
+            
+            // Add click event to each header
+            dropdownHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.dropdown-icon i');
+                
+                // Add click event
+                header.addEventListener('click', function() {
+                    // Toggle active class and display
+                    this.classList.toggle('active');
+                    content.classList.toggle('active');
+                    
+                    if (content.style.display === 'none') {
+                        content.style.display = 'block';
+                        if (icon) {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    } else {
+                        content.style.display = 'none';
+                        if (icon) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        }
+                    }
+                    
+                    // Smooth scroll to section if it's being opened
+                    if (this.classList.contains('active')) {
+                        const sectionId = this.closest('.wiki-section').id;
+                        const yOffset = -80; // Header offset
+                        const element = document.getElementById(sectionId);
+                        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }
+                });
+            });
+            
+            // Check if URL has hash to open specific section
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1);
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    const header = section.querySelector('.wiki-dropdown-header');
+                    const content = section.querySelector('.wiki-dropdown-content');
+                    
+                    // Open the section
+                    header.classList.add('active');
+                    content.classList.add('active');
+                    content.style.display = 'block';
+                    
+                    // Update icon
+                    const icon = header.querySelector('.dropdown-icon i');
+                    if (icon) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                    
+                    // Scroll to it
+                    setTimeout(() => {
+                        const yOffset = -80;
+                        const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }, 300);
+                }
+            }
+            
+            // Update TOC links to open corresponding sections
+            const tocLinks = document.querySelectorAll('.wiki-toc a');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        const header = targetSection.querySelector('.wiki-dropdown-header');
+                        const content = targetSection.querySelector('.wiki-dropdown-content');
+                        
+                        // Open the target section
+                        header.classList.add('active');
+                        content.classList.add('active');
+                        
+                        // Scroll to it
+                        const yOffset = -80;
+                        const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>
+

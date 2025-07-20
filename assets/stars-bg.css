@@ -1,0 +1,80 @@
+/* Space background animation */
+.space-gif-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(125deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    overflow: hidden;
+}
+
+.star-field {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    animation: starFieldAnim 600s linear infinite;
+}
+
+.large-stars {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.7);
+}
+
+.medium-stars {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.4);
+}
+
+.small-stars {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+@keyframes starFieldAnim {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Nebula effects */
+.nebula {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.2;
+    animation: nebulaGlow 15s ease-in-out infinite alternate;
+}
+
+.nebula-blue {
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.5) 0%, rgba(52, 152, 219, 0) 70%);
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.nebula-purple {
+    background: radial-gradient(circle, rgba(155, 89, 182, 0.5) 0%, rgba(155, 89, 182, 0) 70%);
+    bottom: 30%;
+    right: 15%;
+    animation-delay: 5s;
+}
+
+@keyframes nebulaGlow {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.1); }
+}
