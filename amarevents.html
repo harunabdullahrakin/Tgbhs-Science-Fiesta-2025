@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .event-logo {
+    width: 300px;
+    max-width: 90%;
+    height: 150px;
+    background: url('https://amarworld.me/amar-events-logo.png') center/cover no-repeat;
+    margin: 0 auto 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .visit-button {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007BFF;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+
+  .visit-button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .event-logo {
+      height: 120px;
+    }
+
+    .visit-button {
+      font-size: 16px;
+      padding: 10px 25px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="event-logo"></div>
+    <a href="https://amarworld.me" class="visit-button" target="_blank">Visit Now</a>
+  </div>
+</body>
+</html>
