@@ -1,7 +1,5 @@
-// Animation and interactive elements for TGBHS Science Fiesta website
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Parallax effect for hero section
+
     const hero = document.querySelector('.hero');
 
     if (hero) {
@@ -11,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animate elements when they come into view
     const animateOnScroll = function() {
         const elements = document.querySelectorAll('.event-card, .wiki-card, .section-title, .section-subtitle');
 
@@ -19,14 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const elementPosition = element.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
 
-            // If element is in viewport
             if (elementPosition < windowHeight - 50) {
                 element.classList.add('animated');
             }
         });
     };
 
-    // Add animation class to CSS
     const style = document.createElement('style');
     style.innerHTML = `
         .event-card, .wiki-card {
@@ -51,13 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 
-    // Initial check for elements in view
     animateOnScroll();
 
-    // Check for elements on scroll
     window.addEventListener('scroll', animateOnScroll);
 
-    // Create pulsing effect for CTA buttons
     const ctaButtons = document.querySelectorAll('.primary-btn');
 
     ctaButtons.forEach(button => {
@@ -69,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     });
 
-    // Add pulse animation
     const pulseStyle = document.createElement('style');
     pulseStyle.innerHTML = `
         @keyframes pulse {
@@ -84,13 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(pulseStyle);
 
-    // Particle effect for the background (simple version)
     const createParticleEffect = function() {
         const particleContainer = document.createElement('div');
         particleContainer.className = 'particle-container';
         document.body.appendChild(particleContainer);
 
-        // Add styles for particles
         const particleStyle = document.createElement('style');
         particleStyle.innerHTML = `
             .particle-container {
@@ -118,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.head.appendChild(particleStyle);
 
-        // Create particles
         for (let i = 0; i < 20; i++) {
             setTimeout(() => {
                 createParticle(particleContainer);
@@ -134,18 +122,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const particle = document.createElement('div');
         particle.className = 'particle';
 
-        // Random position
         const x = Math.random() * window.innerWidth;
         const y = Math.random() * window.innerHeight;
 
-        // Random size
         const size = Math.random() * 5 + 2;
 
-        // Random end position
         const endX = (Math.random() - 0.5) * 200;
         const endY = (Math.random() - 0.5) * 200;
 
-        // Random duration
         const duration = Math.random() * 10 + 10;
 
         particle.style.width = `${size}px`;
@@ -158,7 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         container.appendChild(particle);
 
-        // Remove particle after animation completes
         setTimeout(() => {
             particle.remove();
         }, duration * 1000);
