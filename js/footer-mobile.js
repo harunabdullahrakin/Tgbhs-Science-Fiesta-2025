@@ -1,20 +1,19 @@
-// This script creates the mobile footer exactly matching the screenshot design 
 document.addEventListener('DOMContentLoaded', function() {
-  // Only run on mobile devices
+
   if (window.innerWidth <= 768) {
-    // Get the footer element
+
     const footer = document.querySelector('.scientific-footer');
-    
+
     if (footer) {
-      // Get container
+
       const container = footer.querySelector('.container');
-      
+
       if (container) {
-        // Create mobile footer HTML that exactly matches the screenshot
+
         const mobileFooterHTML = `
           <div class="mobile-footer-content">
             <!-- Logo and site name are handled by CSS pseudo-elements -->
-            
+
             <!-- Social Icons -->
             <div class="social-icons">
               <a href="#" class="social-icon facebook">
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <i class="fab fa-discord"></i>
               </a>
             </div>
-            
+
             <!-- Navigation -->
             <h4>Navigate</h4>
             <div class="navigate-links">
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <a href="/fiesta/">Fiesta</a>
               <a href="/register/">Register</a>
             </div>
-            
+
             <!-- Contact -->
             <div class="contact-section">
               <h4>Contact</h4>
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <p><i class="fas fa-phone"></i> (123) 456-7890</p>
               <p><i class="fas fa-map-marker-alt"></i> TGBHS Campus</p>
             </div>
-            
+
             <!-- Sponsors -->
             <div class="sponsors-section">
               <h4>Our Sponsors</h4>
@@ -67,14 +66,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="bronze-sponsor">EduWorld</span>
               </div>
             </div>
-            
+
             <!-- Copyright Text -->
             <p class="copyright-text">&copy; 2025 TGBHS Science Fiesta. All rights reserved.</p>
             <p class="copyright-design">Designed with <i class="fas fa-gear"></i> for science enthusiasts</p>
           </div>
         `;
-        
-        // Set the container's innerHTML to our mobile footer
+
         container.innerHTML = mobileFooterHTML;
       }
     }
